@@ -1,4 +1,4 @@
-import type { Elevator, Exit } from "../types";
+import type { Elevator, Exit, Staircase } from "../types";
 
 export const exit: Exit = {
   type: 'exit',
@@ -9,5 +9,10 @@ export const exit: Exit = {
 export const elevator: Elevator = {
   type: 'elevator',
   char: '#',
+}
+
+export const staircase: Staircase = {
+  type: 'staircase',
+  char: '🪜',
   dir: [6],
 }

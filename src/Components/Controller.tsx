@@ -1,14 +1,20 @@
-import floors from '../utils/config'
+import { floors } from '../utils/config'
+import { isWalkable } from '../utils/guards'
 
 const Controller = ({ floor, player, setPlayer } : 
   { floor: number, player: number[], setPlayer: React.Dispatch<React.SetStateAction<number[]>> }
 ) => {
   const canMove = (dir: number): boolean => {
-    if(!floors[floor][player[0]][player[1]] || !floors[floor][player[0]][player[1]]!.dir){
+    const tile = floors[floor][player[0]][player[1]]
+
+    if(!tile
+      || !isWalkable(tile)
+      || !tile.dir
+    ){
       throw new Error('something went wrong')
     }
 
-    return floors[floor][player[0]][player[1]]!.dir!.some(d => d === dir)
+    return tile.dir.some(d => d === dir)
   }
 
   const buttonStyle : React.CSSProperties = {

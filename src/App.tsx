@@ -1,10 +1,21 @@
 import { useState } from 'react'
-import floors from './utils/config'
+import { floors } from './utils/config'
 import Controller from './Components/Controller'
+import Lost from './Components/Lost'
+import FloorChoice from './Components/FloorChoice'
 
 const App = () => {
-  const [player, setPlayer] = useState([98, 50])
-  const [floor, _setFloor] = useState(0)
+  const [player, setPlayer] = useState([98, 1])
+  const [floor, setFloor] = useState(0)
+  const [lost, setLost] = useState(false)
+
+  const tile = floors[floor][player[0]][player[1]]
+
+  if(lost) return <Lost />
+
+  if(tile && (tile.type === 'elevator' || tile.type === 'staircase') && tile.levels){
+    return <FloorChoice tile={tile} setFloor={setFloor} setLost={setLost} setPlayer={setPlayer} />
+  }
 
   const tileStyle = {
     padding: 1
