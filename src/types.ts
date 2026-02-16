@@ -12,7 +12,7 @@ export interface LevelChange {
 
 export interface Elevator{
   type: 'elevator'
-  char: '#'
+  char: '🛗'
   dir?: number[]
   levels?: LevelChange[]
 }
@@ -42,3 +42,5 @@ export type WalkableTile =
   | WalkTile
 
 export type GameTile = WalkableTile | WallTile
+
+export type Level = Array<Array<GameTile | null>>

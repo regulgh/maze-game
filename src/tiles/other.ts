@@ -8,7 +8,7 @@ export const exit: Exit = {
 
 export const elevator: Elevator = {
   type: 'elevator',
-  char: '#',
+  char: '🛗',
 }
 
 export const staircase: Staircase = {
