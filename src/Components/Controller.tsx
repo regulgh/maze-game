@@ -2,19 +2,19 @@ import { floors } from '../utils/config'
 import { isWalkable } from '../utils/guards'
 
 const Controller = ({ floor, player, setPlayer } : 
-  { floor: number, player: number[], setPlayer: React.Dispatch<React.SetStateAction<number[]>> }
+  {
+    floor: number,
+    player: number[],
+    setPlayer: React.Dispatch<React.SetStateAction<number[]>>
+  }
 ) => {
-  const canMove = (dir: number): boolean => {
-    const tile = floors[floor][player[0]][player[1]]
-
-    if(!tile
-      || !isWalkable(tile)
-      || !tile.dir
-    ){
-      throw new Error('something went wrong')
+  const tryToMove = ([ x, y ]: number[]) => {
+    if(isWalkable(floors[floor][x][y])){
+      setPlayer([x, y])
+      return true
     }
 
-    return tile.dir.some(d => d === dir)
+    return false
   }
 
   const buttonStyle : React.CSSProperties = {
@@ -31,19 +31,19 @@ const Controller = ({ floor, player, setPlayer } :
       <div>
         <button 
           style={buttonStyle}
-          onClick={() => canMove(1) && setPlayer([player[0] - 1, player[1] - 1])}
+          onClick={() => tryToMove([player[0] - 1, player[1] - 1])}
         >
           1
         </button>
         <button
           style={buttonStyle}
-          onClick={() => canMove(2) && setPlayer([player[0] - 1, player[1]])}
+          onClick={() => tryToMove([player[0] - 1, player[1]])}
         >
           2
         </button>
         <button
           style={buttonStyle}
-          onClick={() => canMove(3) && setPlayer([player[0] - 1, player[1] + 1])}
+          onClick={() => tryToMove([player[0] - 1, player[1] + 1])}
         >
           3
         </button>
@@ -51,14 +51,14 @@ const Controller = ({ floor, player, setPlayer } :
       <div>
         <button 
           style={buttonStyle}
-          onClick={() => canMove(4) && setPlayer([player[0], player[1] - 1])}
+          onClick={() => tryToMove([player[0], player[1] - 1])}
         >
           4
         </button>
         <span style={buttonStyle}>&nbsp;</span  >
         <button
           style={buttonStyle}
-          onClick={() => canMove(5) && setPlayer([player[0], player[1] + 1])}
+          onClick={() => tryToMove([player[0], player[1] + 1])}
         >
           5
         </button>
@@ -66,19 +66,19 @@ const Controller = ({ floor, player, setPlayer } :
       <div>
         <button
           style={buttonStyle}
-          onClick={() => canMove(6) && setPlayer([player[0] + 1, player[1] - 1])}
+          onClick={() => tryToMove([player[0] + 1, player[1] - 1])}
         >
           6
         </button>
         <button
           style={buttonStyle}
-          onClick={() => canMove(7) && setPlayer([player[0] + 1, player[1]])}
+          onClick={() => tryToMove([player[0] + 1, player[1]])}
         >
           7
         </button>
         <button
           style={buttonStyle}
-          onClick={() => canMove(8) && setPlayer([player[0] + 1, player[1] + 1])}
+          onClick={() => tryToMove([player[0] + 1, player[1] + 1])}
         >
           8
         </button>

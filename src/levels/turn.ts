@@ -12,12 +12,8 @@ const turn = (
 
   let tile = structuredClone(floor[x][y])
 
-  if(!tile) 
+  if(!isWalkable(tile)) 
     tile = walkTile
-  else if(!isWalkable(tile))
-    throw new Error('Only a walkable tile can be a turn')
-
-  tile.dir = []
 
   if(directions.length !== 8)
     throw new Error(`Provide 8 directions for turn [${x}, ${y}]`)
@@ -46,8 +42,7 @@ const turn = (
         floor[xi][yi] = backSlashWallTile
         break
       case null:
-        tile.dir!.push(i)
-        floor[xi][yi] = { ...walkTile, dir: [i, 9 - i] }
+        floor[xi][yi] = { ...walkTile }
         break
       case undefined:
         floor[xi][yi] = null

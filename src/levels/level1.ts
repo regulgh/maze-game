@@ -19,12 +19,12 @@ const setTurns = () => {
 }
 
 const setOther = () => {
-  floor1[30][51] = { ...elevator, dir: [6], levels: [
+  floor1[30][51] = { ...elevator, levels: [
     { level: 0, position: [46, 102], right: true},
     { level: 2, position: [], right: false}
   ]}
 
-  floor1[47][70] = { ...staircase, dir: [6], levels: [
+  floor1[47][70] = { ...staircase, levels: [
     { level: 0, position: [], right: false},
     { level: 2, position: [2, 96], right: true}
   ]}

@@ -1,7 +1,6 @@
 export interface Exit{
   type: 'exit'
   char: 'E'
-  dir: number[]
 }
 
 export interface LevelChange {
@@ -13,21 +12,18 @@ export interface LevelChange {
 export interface Elevator{
   type: 'elevator'
   char: '🛗'
-  dir?: number[]
   levels?: LevelChange[]
 }
 
 export interface Staircase{
   type: 'staircase'
   char: '🪜'
-  dir?: number[]
   levels?: LevelChange[]
 }
 
 export interface WalkTile{
   type: 'walkable'
   char: ' '
-  dir?: number[]
 }
 
 export interface WallTile{
