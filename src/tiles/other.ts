@@ -1,4 +1,4 @@
-import type { Elevator, Exit, Staircase } from "../types";
+import type { Elevator, Exit, LabEquipment, Staircase, Sun, Window } from "../types";
 
 export const exit: Exit = {
   type: 'exit',
@@ -13,4 +13,19 @@ export const elevator: Elevator = {
 export const staircase: Staircase = {
   type: 'staircase',
   char: '🪜',
+}
+
+export const window: Window = {
+  type: 'window',
+  char: '🪟',
+}
+
+export const labEquipment: LabEquipment = {
+  type: 'window',
+  char: '💉',
+}
+
+export const sun: Sun = {
+  type: 'sun',
+  char: '☀️',
 }

@@ -5,11 +5,14 @@ import Lost from './Components/Lost'
 import FloorChoice from './Components/FloorChoice'
 
 const App = () => {
-  const [player, setPlayer] = useState([98, 1])
-  const [floor, setFloor] = useState(0)
+  const [player, setPlayer] = useState([45, 51])
+  const [floor, setFloor] = useState(1)
   const [lost, setLost] = useState(false)
 
   const playerTile = floors[floor][player[0]][player[1]]
+
+  if(!lost && playerTile && playerTile.type === 'walkable' && playerTile.lose )
+    setLost(true)
 
   if(lost) return <Lost />
 
@@ -26,7 +29,7 @@ const App = () => {
   }
 
   const tileStyle = {
-    padding: 1
+    padding: 10
   }
 
   console.log(player)
@@ -50,14 +53,14 @@ const App = () => {
               ? <span style={tileStyle} key={coli}>
                 &nbsp;
               </span>
-              : <span style={tileStyle} key={coli}>
+              : <span style={{ ...tileStyle, color: (tile.type === 'wall' && tile.color) ? tile.color : 'black' }} key={coli}>
                 {tile.char}
               </span>
           })}
         </div>
       )}
      
-    <Controller floor={floor} player={player} setPlayer={setPlayer} />
+      <Controller floor={floor} player={player} setPlayer={setPlayer} />
     </div>
   )
 }

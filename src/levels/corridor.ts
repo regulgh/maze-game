@@ -7,7 +7,8 @@ const corridor = (
   start: number[],
   direction: 'ver' | 'hor' | 'slash' | 'backslash',
   floor: Array<Array<GameTile | null>>,
-  reverse: boolean = false
+  reverse: boolean = false,
+  color: string | undefined = undefined
 ) => {
   let 
     walkTile: WalkTile,
@@ -16,25 +17,31 @@ const corridor = (
     verMult: number = 1,
     slashMult: number = 1
 
+  const
+    backSlashWall = { ...backSlashWallTile, color },
+    slashWall = { ...slashWallTile, color },
+    verWall = { ...verWallTile, color },
+    horWall = { ...horWallTile, color }
+
   switch (direction) {
     case 'ver':
       walkTile = verWalkTile
-      wallTile = verWallTile
+      wallTile = verWall
       verMult = 0
       break
     case 'hor':
       walkTile = horWalkTile
-      wallTile = horWallTile
+      wallTile = horWall
       horMult = 0
       break
     case 'slash':
       walkTile = slashWalkTile
-      wallTile = slashWallTile
+      wallTile = slashWall
       slashMult = -1
       break
     case 'backslash':
       walkTile = backSlashWalkTile
-      wallTile = backSlashWallTile
+      wallTile = backSlashWall
       break
   }
 

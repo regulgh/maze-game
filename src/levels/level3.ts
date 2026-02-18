@@ -1,20 +1,20 @@
-import { elevator } from "../tiles/other";
+import { elevator, sun, window } from "../tiles/other";
 import type { Level } from "../types";
 import corridor from "./corridor";
-import room from "./rooms/room";
+import lab from "./rooms/lab"
 
-const floor3: Level = Array.from({ length: 120 }, () => new Array(120).fill(null))
+const floor3: Level = Array.from({ length: 130 }, () => new Array(130).fill(null))
 
 const setCorridors = () => {
-  corridor(5, [70, 70], 'slash', floor3, true)
-  corridor(10, [65, 74], 'ver', floor3, true)
+  corridor(5, [70, 70], 'slash', floor3, true, 'lightgrey')
+  corridor(10, [65, 74], 'ver', floor3, true, 'lightgrey')
 }
 
 const setTurns = () => {
 }
 
 const setRooms = () => {
-  room([45, 65], [55, 80], floor3, [55, 74])
+  lab([45, 65], [55, 80], floor3, 'ver', [55, 74], 'lightgrey')
 }
 
 const setOther = () => {
@@ -22,6 +22,9 @@ const setOther = () => {
     { level: 2, position: [87, 47], right: true},
     { level: 4, position: [70, 70], right: true}
   ]}
+
+  floor3[45][74] = window
+  floor3[44][74] = sun
 }
 
 setCorridors()

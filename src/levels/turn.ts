@@ -6,11 +6,18 @@ import { isWalkable } from "../utils/guards";
 const turn = (
   directions: Array<'\u2013' | '|' | '/' | '\\' | null | undefined>,
   coords: number[],
-  floor: Array<Array<GameTile | null>>
+  floor: Array<Array<GameTile | null>>,
+  color: string | undefined = undefined
 ) => {
   const x = coords[0], y = coords[1]
 
   let tile = structuredClone(floor[x][y])
+
+  const
+    backSlashWall = { ...backSlashWallTile, color },
+    slashWall = { ...slashWallTile, color },
+    verWall = { ...verWallTile, color },
+    horWall = { ...horWallTile, color }
 
   if(!isWalkable(tile)) 
     tile = walkTile
@@ -30,16 +37,16 @@ const turn = (
 
     switch (d) {
       case '–':
-        floor[xi][yi] = horWallTile
+        floor[xi][yi] = horWall
         break
       case '|':
-        floor[xi][yi] = verWallTile
+        floor[xi][yi] = verWall
         break
       case '/':
-        floor[xi][yi] = slashWallTile
+        floor[xi][yi] = slashWall
         break
       case '\\':
-        floor[xi][yi] = backSlashWallTile
+        floor[xi][yi] = backSlashWall
         break
       case null:
         floor[xi][yi] = { ...walkTile }

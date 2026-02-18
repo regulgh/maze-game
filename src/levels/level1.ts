@@ -1,37 +1,52 @@
 import { elevator, staircase } from "../tiles/other";
+import { walkTile } from "../tiles/walk";
 import type { Level } from "../types";
 import corridor from "./corridor";
+import lab from "./rooms/lab";
+import room from "./rooms/room";
 import turn from "./turn";
 
-const floor1: Level = Array.from({ length: 120 }, () => new Array(120).fill(null))
+const floor1: Level = Array.from({ length: 130 }, () => new Array(130).fill(null))
 
 const setCorridors = () => {
-  corridor(50, [48, 69], 'slash', floor1)
-  corridor(18, [97, 3], 'hor', floor1)
-  corridor(18, [79, 3], 'ver', floor1)
-  corridor(48, [31, 50], 'slash', floor1)
+  corridor(50, [48, 84], 'slash', floor1)
+  corridor(18, [97, 18], 'hor', floor1)
+  corridor(18, [79, 18], 'ver', floor1)
+  corridor(48, [31, 65], 'slash', floor1)
+
+  corridor(11, [45, 53], 'hor', floor1)
+}
+
+const setRooms = () => {
+  room([69, 5], [90, 17], floor1, [87, 17])
 }
 
 const setTurns = () => {
-  turn(['|', null, '|', '|', null, undefined, '–', '–'], [97, 3], floor1)
-  turn(['–', '–', null, null, '/', '–', '–', undefined], [97, 20], floor1)
-  turn([undefined, '/', null, '/', '/', '|', null, '|'], [78, 3], floor1)
+  turn(['|', null, '|', '|', null, undefined, '–', '–'], [97, 18], floor1)
+  turn(['–', '–', null, null, '/', '–', '–', undefined], [97, 35], floor1)
+  turn([undefined, '/', null, '/', '/', '|', null, '|'], [78, 18], floor1)
+
+  turn([undefined, '/', null, '/', null, null, '/', '–'], [45, 51], floor1)
 }
 
 const setOther = () => {
-  floor1[30][51] = { ...elevator, levels: [
-    { level: 0, position: [46, 102], right: true},
+  floor1[30][66] = { ...elevator, levels: [
+    { level: 0, position: [46, 117], right: true},
     { level: 2, position: [], right: false}
   ]}
 
-  floor1[47][70] = { ...staircase, levels: [
+  floor1[47][85] = { ...staircase, levels: [
     { level: 0, position: [], right: false},
-    { level: 2, position: [2, 96], right: true}
+    { level: 2, position: [17, 96], right: true}
   ]}
+
+  floor1[45][52] = { ...walkTile, lose: true}
+  floor1[87][17] = { ...walkTile, lose: true}
 }
 
 setCorridors()
 setTurns()
+setRooms()
 setOther()
 
 export default floor1
