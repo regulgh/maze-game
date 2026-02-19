@@ -64,3 +64,28 @@ export type WalkableTile =
 export type GameTile = WalkableTile | WallTile | Window | LabEquipment | Sun
 
 export type Level = Array<Array<GameTile | null>>
+
+
+
+export const colorNames = [
+  'Зеленый',
+  'Серый',
+  'Черный'
+] as const
+
+export const windowNames = [
+  'Иллюминаторов нет', 
+  'Иллюминатор и солнце',
+  'Иллюминатор, солнца нет'
+] as const
+
+export const roomNames = [
+  'Лаборатория',
+  'Обычная'
+] as const
+
+export interface PathKey {
+  color: typeof colorNames[number]
+  window: typeof windowNames[number]
+  room: typeof roomNames[number]
+}

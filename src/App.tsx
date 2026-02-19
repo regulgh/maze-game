@@ -3,10 +3,10 @@ import { floors } from './utils/config'
 import Controller from './Components/Controller'
 import Lost from './Components/Lost'
 import FloorChoice from './Components/FloorChoice'
-
+import PathFinder from './Components/PathFinder'
 const App = () => {
-  const [player, setPlayer] = useState([45, 51])
-  const [floor, setFloor] = useState(1)
+  const [player, setPlayer] = useState([70, 70])
+  const [floor, setFloor] = useState(3)
   const [lost, setLost] = useState(false)
 
   const playerTile = floors[floor][player[0]][player[1]]
@@ -61,6 +61,7 @@ const App = () => {
       )}
      
       <Controller floor={floor} player={player} setPlayer={setPlayer} />
+      <PathFinder />
     </div>
   )
 }

@@ -19,7 +19,7 @@ const setRooms = () => {
 
 const setOther = () => {
   floor3[71][69] = { ...elevator, levels: [
-    { level: 2, position: [87, 47], right: true},
+    { level: 2, position: [102, 47], right: true},
     { level: 4, position: [70, 70], right: true}
   ]}
 
