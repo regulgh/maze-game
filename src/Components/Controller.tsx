@@ -18,12 +18,13 @@ const Controller = ({ floor, player, setPlayer } :
   }
 
   const buttonStyle : React.CSSProperties = {
-    padding: 15,
+    padding: 40,
+    margin: 5,
     border: "none",
     borderRadius: 8,
     cursor: 'pointer',
     textAlign: 'center',
-    fontSize: 64
+    fontSize: 128
   }
 
   return (

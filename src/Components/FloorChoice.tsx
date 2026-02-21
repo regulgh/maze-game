@@ -9,12 +9,13 @@ const FloorChoice = ({ tile, setPlayer, setFloor, setLost } :
   }
 ) => {
   const buttonStyle : React.CSSProperties = {
-    padding: 15,
+    padding: 40,
+    margin: 5,
     border: "none",
     borderRadius: 8,
     cursor: 'pointer',
     textAlign: 'center',
-    fontSize: 64
+    fontSize: 128
   }
 
   const handleLevelChange = (l: LevelChange) => {
@@ -31,7 +32,9 @@ const FloorChoice = ({ tile, setPlayer, setFloor, setLost } :
   }
 
   return (
-    <div>
+    <div style={{ justifySelf: 'center' }}>
+      <h1 style={{ fontSize: 128 }}>Выбери этаж</h1>
+
       {tile.levels.map(l =>
         <div key={l.level}>
           <button

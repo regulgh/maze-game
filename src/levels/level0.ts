@@ -12,6 +12,7 @@ const setCorridors = () => {
 
   corridor(11, [97, 32], 'slash', floor0, true)
   corridor(11, [71, 94], 'hor', floor0)
+  corridor(11, [84, 78], 'hor', floor0, true)
 }
 
 const setTurns = () => {
@@ -19,6 +20,7 @@ const setTurns = () => {
   turn(['–', '/', null, null, null, '–', '–', '–'], [98, 65], floor0)
 
   turn([undefined, '/', null, '/', null, null, '/', '–'], [71, 92], floor0)
+  turn(['–', '/', null, null, '/', null, '/', undefined], [84, 79], floor0)
 }
 
 const setOther = () => {
@@ -32,6 +34,7 @@ const setOther = () => {
   floor0[97][32] = { ...walkTile, lose: true}
   floor0[98][67] = { ...walkTile, lose: true}
   floor0[71][93] = { ...walkTile, lose: true}
+  floor0[84][78] = { ...walkTile, lose: true}
 }
 
 

@@ -2,7 +2,6 @@ import { elevator, staircase } from "../tiles/other";
 import { walkTile } from "../tiles/walk";
 import type { Level } from "../types";
 import corridor from "./corridor";
-import lab from "./rooms/lab";
 import room from "./rooms/room";
 import turn from "./turn";
 
@@ -15,6 +14,10 @@ const setCorridors = () => {
   corridor(48, [31, 65], 'slash', floor1)
 
   corridor(11, [45, 53], 'hor', floor1)
+  corridor(11, [57, 41], 'hor', floor1)
+  corridor(11, [97, 18], 'slash', floor1)
+  corridor(15, [97, 35], 'hor', floor1)
+  corridor(11, [61, 69], 'backslash', floor1, true)
 }
 
 const setRooms = () => {
@@ -22,11 +25,12 @@ const setRooms = () => {
 }
 
 const setTurns = () => {
-  turn(['|', null, '|', '|', null, undefined, '–', '–'], [97, 18], floor1)
-  turn(['–', '–', null, null, '/', '–', '–', undefined], [97, 35], floor1)
+  turn(['|', null, '|', '|', null, null, '–', '–'], [97, 18], floor1)
+  turn(['–', '–', null, null, null, '–', '–', '–'], [97, 35], floor1)
   turn([undefined, '/', null, '/', '/', '|', null, '|'], [78, 18], floor1)
 
   turn([undefined, '/', null, '/', null, null, '/', '–'], [45, 51], floor1)
+  turn([undefined, '/', null, '/', null, null, '/', '–'], [57, 39], floor1)
 }
 
 const setOther = () => {
@@ -42,6 +46,10 @@ const setOther = () => {
 
   floor1[45][52] = { ...walkTile, lose: true}
   floor1[87][17] = { ...walkTile, lose: true}
+  floor1[57][40] = { ...walkTile, lose: true}
+  floor1[98][17] = { ...walkTile, lose: true}
+  floor1[97][37] = { ...walkTile, lose: true}
+  floor1[61][69] = { ...walkTile, lose: true}
 }
 
 setCorridors()
